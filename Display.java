@@ -1,4 +1,4 @@
-package frogger;
+package CrossyRoad;
 
 import java.awt.Color;
 import java.awt.Font;
