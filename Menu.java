@@ -60,8 +60,8 @@ public class Menu implements MouseMotionListener,MouseListener,KeyListener{
 				image[i]= ImageIO.read(getClass().getResourceAsStream("img/GTlogo.png"));
 			}
 
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -77,7 +77,7 @@ public class Menu implements MouseMotionListener,MouseListener,KeyListener{
 				randRadian[i]=0;
 		}
 	}
-	public void render(Graphics g){
+	public void graphic(Graphics g){
 		Graphics2D g2d= (Graphics2D)g;
 		if(Display.state==Display.STATE.MENU){
 			font= new Font("Century Gothic",Font.BOLD,50);
