@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 public class Display extends JPanel implements Runnable{
 	public static int GRID=50;
@@ -121,6 +122,7 @@ public class Display extends JPanel implements Runnable{
 		deaths++;
 		buzz.getBuzz().x=250;
 		buzz.getBuzz().y=HEIGHT-90;
+		JOptionPane.showMessageDialog(null, "Game Over", "Game Over!", JOptionPane.PLAIN_MESSAGE);
 	}
 	public void AntiAliasing(Graphics g){
 		Graphics2D g2d= (Graphics2D)g;
