@@ -1,4 +1,4 @@
-package frogger;
+package CrossyRoad;
 
 import java.util.Random;
 import javax.imageio.ImageIO;
