@@ -4,6 +4,7 @@ Developers: Phillip Phanhthourath, Niti Mirkhelkar, Tia Kungwani, and Veena Gonu
 
 This project is a GT themed version of the classic retro game concept of Frogger. 
 The player controls Buzz to help him cross the road and river safely.
+If the player finishes a round, they will be greeted with a "Gameover!" message.
 Avoid the cars and water in order to keep Buzz out of danger!
 
 
