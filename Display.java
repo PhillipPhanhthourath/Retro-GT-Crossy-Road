@@ -26,21 +26,21 @@ public class Display extends JPanel implements Runnable{
 	private Menu menu;
 	private BufferedImage image;
 	private Frog frog;
-	private Cars cars1[];
-	private Cars cars2[];
-	private Logs logs1[];
-	private Logs logs2[];
-	private Logs logs3[];
+	private Vehicles v1[];
+	private Vehicles v2[];
+	private Boats b1[];
+	private Boats b2[];
+	private Boats b3[];
 	private int deaths=0;
 	private int score=0;
 	Display(){
 		frog= new Frog(250,HEIGHT-90,50,50);
 		menu= new Menu();
-		cars1= new Cars[2];
-		cars2= new Cars[3];
-		logs1= new Logs[2];
-		logs2= new Logs[2];
-		logs3= new Logs[2];
+		v1 = new Vehicles[2];
+		v2 = new Vehicles[3];
+		b1= new Boats[2];
+		b2= new Boats[2];
+		b3= new Boats[2];
 		
 		loadMap();
 		initializeGame();
@@ -53,46 +53,46 @@ public class Display extends JPanel implements Runnable{
 		setFocusable(true);
 	}
 	public void initializeGame(){
-		for(int i=0;i<cars1.length;i++){
-			cars1[i]= new Cars(0+i*290,HEIGHT-140,100,50,3);
+		for(int i=0;i<v1.length;i++){
+			v1[i]= new Vehicles(0+i*290,HEIGHT-140,100,50,3);
 		}
-		for(int i=0;i<cars2.length;i++){
-			cars2[i]= new Cars(0+i*270,HEIGHT-190,100,50,-2);
+		for(int i=0;i<v2.length;i++){
+			v2[i]= new Vehicles(0+i*270,HEIGHT-190,100,50,-2);
 		}
-		for(int i=0;i<logs1.length;i++){
-			logs1[i]= new Logs(0+i*250,HEIGHT-290,170,50,+2);
+		for(int i=0;i<b1.length;i++){
+			b1[i]= new Boats(0+i*250,HEIGHT-290,170,50,+2);
 		}
-		for(int i=0;i<logs2.length;i++){
-			logs2[i]= new Logs(0+i*300,HEIGHT-340,170,50,-2);
+		for(int i=0;i<b2.length;i++){
+			b2[i]= new Boats(0+i*300,HEIGHT-340,170,50,-2);
 		}
-		for(int i=0;i<logs3.length;i++){
-		logs3[i]= new Logs(0+i*350,HEIGHT-390,170,50,+3);
+		for(int i=0;i<b3.length;i++){
+			b3[i]= new Boats(0+i*350,HEIGHT-390,170,50,+3);
 		}
 	}
 	public void didIntersectCar(){
-		for(Cars car:cars1){
-			if(frog.getFrog().getBounds().intersects(car.getCar().getBounds())){
+		for(Vehicles v : v1){
+			if(frog.getFrog().getBounds().intersects(v.getVehicle().getBounds())){
 				reset();
 			}
 		}
-		for(Cars car:cars2){
-			if(frog.getFrog().getBounds().intersects(car.getCar().getBounds())){
+		for(Vehicles v : v2){
+			if(frog.getFrog().getBounds().intersects(v.getVehicle().getBounds())){
 				reset();
 			}
 		}
 	}
 	public void isInsideLog(){
-		Logs logarray[][]=new Logs[][] {logs1,logs2,logs3};
+		Boats boatArray[][]=new Boats[][] {b1,b2,b3};
 
-		for (int i = 0; i < logarray.length; i++) {
+		for (int i = 0; i < boatArray.length; i++) {
 
 			if(frog.getFrog().getCenterY()<HEIGHT-240-i*50&&frog.getFrog().getCenterY()>HEIGHT-290-i*50){
-				if(!((frog.getFrog().getMinX()>logarray[i][0].getLog().getMinX()&&frog.getFrog().getMaxX()<logarray[i][0].getLog().getMaxX())||
-						(frog.getFrog().getMinX()>logarray[i][1].getLog().getMinX()&&frog.getFrog().getMaxX()<logarray[i][1].getLog().getMaxX()))){
+				if(!((frog.getFrog().getMinX()>boatArray[i][0].getBoat().getMinX()&&frog.getFrog().getMaxX()<logarray[i][0].getLog().getMaxX())||
+						(frog.getFrog().getMinX()>boatArray[i][1].getBoat().getMinX()&&frog.getFrog().getMaxX()<logarray[i][1].getLog().getMaxX()))){
 					reset();
 				}
 				else{
-					frog.mover(logarray[i][1].getSpeed());
+					frog.mover(boatArray[i][1].getSpeed());
 				}
 			}
 		}
@@ -101,8 +101,8 @@ public class Display extends JPanel implements Runnable{
 	public void loadMap(){
 		try {
 			image= ImageIO.read(getClass().getResourceAsStream("img/map.png"));
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	public void score(){
@@ -114,7 +114,7 @@ public class Display extends JPanel implements Runnable{
 	}
 	public void showInfo(Graphics g){
 		Graphics2D g2d= (Graphics2D)g;
-		g.setColor(Color.WHITE);
+		g.setColor(Color.BLACK);
 		g2d.setFont(new Font("Arial", Font.PLAIN, 18));
 		g2d.drawString("Deaths: "+Integer.toString(deaths), 15, 20);
 		g2d.drawString("Score: "+Integer.toString(score), 105, 20);
@@ -130,24 +130,24 @@ public class Display extends JPanel implements Runnable{
 	}
 	public void renderGame(Graphics g){
 		g.drawImage(image, 0, 0, null);
-		for(Logs log: logs1)
-			log.render(g);
-		for(Logs log: logs2)
-			log.render(g);
-		for(Logs log: logs3)
-			log.render(g);
-		frog.render(g);
-		for(Cars car: cars1)
-			car.render(g);
-		for(Cars car: cars2)
-			car.render(g);
+		for(Boats boat : b1)
+			boat.graphic(g);
+		for(Boats boat : b2)
+			boat.graphic(g);
+		for(Boats boat : b3)
+			boat.graphic(g);
+		frog.graphic(g);
+		for(Vehicles vehicle: v1)
+			vehicle.graphic(g);
+		for(Vehicles vehicle: v2)
+			vehicle.graphic(g);
 	}
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		AntiAliasing(g);
 		if(state==STATE.MENU||state==STATE.HELP){
-			menu.render(g);
+			menu.graphic(g);
 		}else if(state==STATE.GAME){
 		renderGame(g);
 		score();
