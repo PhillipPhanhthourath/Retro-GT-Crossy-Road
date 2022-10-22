@@ -22,10 +22,9 @@ public class Display extends JPanel implements Runnable{
 		HELP
 	};
 	public static STATE state=STATE.MENU;
-	
 	private Menu menu;
 	private BufferedImage image;
-	private Frog frog;
+	private Buzz buzz;
 	private Vehicles v1[];
 	private Vehicles v2[];
 	private Boats b1[];
@@ -34,7 +33,7 @@ public class Display extends JPanel implements Runnable{
 	private int deaths=0;
 	private int score=0;
 	Display(){
-		frog= new Frog(250,HEIGHT-90,50,50);
+		buzz = new Buzz(250,HEIGHT-90,50,50);
 		menu= new Menu();
 		v1 = new Vehicles[2];
 		v2 = new Vehicles[3];
@@ -49,7 +48,7 @@ public class Display extends JPanel implements Runnable{
 		this.addKeyListener(menu);
 		this.addMouseListener(menu);
 		this.addMouseMotionListener(menu);
-		this.addKeyListener(frog);
+		this.addKeyListener(buzz);
 		setFocusable(true);
 	}
 	public void initializeGame(){
@@ -71,12 +70,12 @@ public class Display extends JPanel implements Runnable{
 	}
 	public void didIntersectCar(){
 		for(Vehicles v : v1){
-			if(frog.getFrog().getBounds().intersects(v.getVehicle().getBounds())){
+			if(buzz.getBuzz().getBounds().intersects(v.getVehicle().getBounds())){
 				reset();
 			}
 		}
 		for(Vehicles v : v2){
-			if(frog.getFrog().getBounds().intersects(v.getVehicle().getBounds())){
+			if(buzz.getBuzz().getBounds().intersects(v.getVehicle().getBounds())){
 				reset();
 			}
 		}
@@ -86,18 +85,17 @@ public class Display extends JPanel implements Runnable{
 
 		for (int i = 0; i < boatArray.length; i++) {
 
-			if(frog.getFrog().getCenterY()<HEIGHT-240-i*50&&frog.getFrog().getCenterY()>HEIGHT-290-i*50){
-				if(!((frog.getFrog().getMinX()>boatArray[i][0].getBoat().getMinX()&&frog.getFrog().getMaxX()<logarray[i][0].getLog().getMaxX())||
-						(frog.getFrog().getMinX()>boatArray[i][1].getBoat().getMinX()&&frog.getFrog().getMaxX()<logarray[i][1].getLog().getMaxX()))){
+			if(buzz.getBuzz().getCenterY()<HEIGHT-240-i*50&&buzz.getBuzz().getCenterY()>HEIGHT-290-i*50){
+				if(!((buzz.getBuzz().getMinX()>boatArray[i][0].getBoat().getMinX()&&buzz.getBuzz().getMaxX()<boatArray[i][0].getBoat().getMaxX())||
+						(buzz.getBuzz().getMinX()>boatArray[i][1].getBoat().getMinX()&&buzz.getBuzz().getMaxX()<boatArray[i][1].getBoat().getMaxX()))){
 					reset();
 				}
 				else{
-					frog.mover(boatArray[i][1].getSpeed());
+					buzz.mover(boatArray[i][1].getSpeed());
 				}
 			}
 		}
 	}
-	
 	public void loadMap(){
 		try {
 			image= ImageIO.read(getClass().getResourceAsStream("img/map.png"));
@@ -106,7 +104,7 @@ public class Display extends JPanel implements Runnable{
 		}
 	}
 	public void score(){
-		if(frog.getFrog().getCenterY()<HEIGHT-390){
+		if(buzz.getBuzz().getCenterY()<HEIGHT-390){
 			score++;
 			deaths--;
 			reset();
@@ -121,8 +119,8 @@ public class Display extends JPanel implements Runnable{
 	}
 	public void reset(){
 		deaths++;
-		frog.getFrog().x=250;
-		frog.getFrog().y=HEIGHT-90;
+		buzz.getBuzz().x=250;
+		buzz.getBuzz().y=HEIGHT-90;
 	}
 	public void AntiAliasing(Graphics g){
 		Graphics2D g2d= (Graphics2D)g;
@@ -136,7 +134,7 @@ public class Display extends JPanel implements Runnable{
 			boat.graphic(g);
 		for(Boats boat : b3)
 			boat.graphic(g);
-		frog.graphic(g);
+		buzz.graphic(g);
 		for(Vehicles vehicle: v1)
 			vehicle.graphic(g);
 		for(Vehicles vehicle: v2)
@@ -172,5 +170,4 @@ public class Display extends JPanel implements Runnable{
             }
         }
 	}
-
 }
