@@ -1,4 +1,4 @@
-package CrossyRoad;
+package crossy;
 
 import java.awt.Color;
 import java.awt.Font;
