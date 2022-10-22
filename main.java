@@ -1,4 +1,4 @@
-package frogger;
+package crossy;
 
 import javax.swing.JFrame;
 
