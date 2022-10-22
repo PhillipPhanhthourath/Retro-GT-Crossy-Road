@@ -3,15 +3,17 @@ Classic Crossy Road game written in Java
 
 ## To Run the Project
 
-__Clone the project first (Download)__
+__Clone the project first__
 ```
-git clone *LINK HERE*
+Download file onto device.
 ```
 
 __Then move to the project directory and run javac, java__
 
 ```
-cd ../Frogger
-javac frogger/main.java
-java frogger.main
+(Navigation information for MacOS)
+cd gt-crossyroad-main
+cd frogger-master
+javac crossy/main.java
+java crossy.main
 ```
