@@ -20,7 +20,7 @@ __Then move to the project directory and run javac, java__
 ```
 (Navigation information for MacOS)
 cd gt-crossyroad-main
-cd frogger-master
+cd crossy-master
 javac crossy/main.java
 java crossy.main
 ```
