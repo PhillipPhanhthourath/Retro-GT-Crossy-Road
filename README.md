@@ -1,5 +1,12 @@
 # GT Themed Crossy Road
-Classic Crossy Road game written in Java 
+
+Developers: Phillip Phanhthourath, Niti Mirkhelkar, Tia Kungwani, and Veena Gonugondla.
+
+This project is a GT themed version of the classic retro game concept of Frogger. 
+The player controls Buzz to help him cross the road and river safely.
+Avoid the cars and water in order to keep Buzz out of danger!
+
+
 
 ## To Run the Project
 
