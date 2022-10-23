@@ -1,7 +1,7 @@
 package crossy;
 
 import javax.swing.JFrame;
-
+//main
 public class main {
 	
 	public static void main(String[] args) {		
