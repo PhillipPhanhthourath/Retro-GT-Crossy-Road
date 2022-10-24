@@ -11,16 +11,13 @@ Avoid the cars and water in order to keep Buzz out of danger!
 
 ## To Run the Project
 
-__Clone the project first__
-```
-Download file onto device.
-```
+__Download and open the zip file on your device__
 
 __Then move to the project directory and run javac, java__
 
 ```
 (Navigation information for MacOS)
-cd gt-crossyroad-main
+cd retro-gt-crossy-road-main
 cd crossy-master
 javac crossy/main.java
 java crossy.main
