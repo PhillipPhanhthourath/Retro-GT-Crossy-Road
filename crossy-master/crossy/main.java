@@ -1,7 +1,7 @@
 package crossy;
 
 import javax.swing.JFrame;
-//main
+
 public class main {
 	
 	public static void main(String[] args) {		
@@ -9,7 +9,7 @@ public class main {
 		Display game= new Display();	
 		frame.add(game);
 		frame.setSize(600,480);
-      		frame.setResizable(false);
+      		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
